@@ -15,30 +15,35 @@ import qihui.sun.algorithm.sort.CheckSortIsOk;
 public class QuickSort {
 
     public static void sort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
         int left = 0;
         int right = arr.length - 1;
         quickSort(arr, left, right);
     }
 
     private static void quickSort(int[] arr, int left, int right) {
-        if (left >= right) {
+        if (left > right) {
             return;
         }
+        int randomIndex = (int) (Math.random() * (right - left + 1)) + left;
+        int randomNum = arr[randomIndex];
+        int[] newArr = new int[right - left + 1];
+        int index = left;
         int lIndex = left;
         int rIndex = right;
-        int index = left;
-        int randomIndex = left + ((int) (Math.random() * (right - left + 1)) >> 1);
-        int num = arr[randomIndex];
         while (index <= rIndex) {
-            if (arr[index] > num) {
-                CheckSortIsOk.swap2(arr, index, rIndex--);
-            } else if (arr[index] == num) {
+            if (arr[index] == randomNum) {
                 index++;
+            } else if (arr[index] > randomNum) {
+                CheckSortIsOk.swap2(arr, index, rIndex--);
             } else {
                 CheckSortIsOk.swap2(arr, index++, lIndex++);
             }
         }
         quickSort(arr, left, lIndex - 1);
-        quickSort(arr, index, right);
+        quickSort(arr, rIndex + 1, right);
+
     }
 }

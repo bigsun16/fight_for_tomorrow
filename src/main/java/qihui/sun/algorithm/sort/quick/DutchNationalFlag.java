@@ -27,20 +27,20 @@ public class DutchNationalFlag {
     }
 
     public static void sort(int[] arr, int num) {
-        int lIndex = 0;
-        int rIndex = arr.length - 1;
+        if (arr == null || arr.length < 2) {
+            return;
+        }
         int index = 0;
-        while (index <= rIndex) {
-            if (arr[index] < num) {
-                CheckSortIsOk.swap2(arr, lIndex++, index++);
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (index <= right) {
+            if (arr[index] > num) {
+                CheckSortIsOk.swap2(arr, index, right--);
             } else if (arr[index] == num) {
                 index++;
             } else {
-                if (index < rIndex) {
-                    CheckSortIsOk.swap2(arr, index, rIndex--);
-                } else {
-                    break;
-                }
+                CheckSortIsOk.swap2(arr, index++, left++);
             }
         }
     }

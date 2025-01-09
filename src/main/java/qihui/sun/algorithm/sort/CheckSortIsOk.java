@@ -1,12 +1,13 @@
 package qihui.sun.algorithm.sort;
 
+import qihui.sun.algorithm.sort.merge.MergeSort;
 import qihui.sun.algorithm.sort.quick.QuickSort;
 
 import java.util.Arrays;
 
 public class CheckSortIsOk {
     public static void main(String[] args) {
-        int times = 500000;
+        int times = 100000;
         int maxNum = 1000;
         int maxSize = 1000;
         boolean result = false;
@@ -14,11 +15,11 @@ public class CheckSortIsOk {
         for (int i = 0; i < times; i++) {
             int[] arr = generatorRandomArr(maxSize, maxNum);
             int[] arr2 = copyArray(arr);
-//            SelectionSort.sort(arr);//67272
-//            BubbleSort.sort21(arr);//188299
-//            InsertionSort.sort2(arr);//80109
-//            MergeSort.sort(arr);//35163
-            QuickSort.sort(arr);//29229
+//            SelectionSort.sort(arr);//11731
+//            BubbleSort.sort(arr);//29463  23580
+//            InsertionSort.sort(arr);//7750
+//            MergeSort.sort(arr);//7251
+            QuickSort.sort(arr);//6461
             Arrays.sort(arr2);
             result = Arrays.equals(arr, arr2);
             if (!result) {

@@ -11,25 +11,13 @@ package qihui.sun.algorithm.sort;
  */
 public class InsertionSort {
 
-    public static void sort2(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
-                CheckSortIsOk.swap(arr, j, j - 1);
-            }
-        }
-    }
-
-
     public static void sort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
         for (int i = 0; i < arr.length; i++) {
-            for (int j = i; j > 0 && arr[j - 1] > arr[j]; j--) {
-                CheckSortIsOk.swap(arr, j, j - 1);
+            for (int j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
+                CheckSortIsOk.swap2(arr, j, j - 1);
             }
         }
     }

@@ -11,37 +11,22 @@ public class FindOddTwo {
     public static void main(String[] args) {
         int[] arr = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12};
         find(arr);
-        find2(arr);
-    }
-
-    private static void find2(int[] arr) {
-        int result = 0;
-        for (int num : arr) {
-            result ^= num;
-        }
-        int num1 = 0;
-        int oneBitOfRight = (~result + 1) & result;
-        for (int num : arr) {
-            if ((num & oneBitOfRight) != 0) {
-                num1 ^= num;
-            }
-        }
-        System.out.println(num1 + "-----" + (result ^ num1));
     }
 
     private static void find(int[] arr) {
-        int xorResult = 0;
-        for (int j : arr) {
-            xorResult ^= j;
+        int res = 0;
+        for (int num : arr) {
+            res ^= num;
         }
-        int num1 = 0;
-        // 找到最右边的1位
-        int rightOne = xorResult & (~xorResult + 1);
-        for (int j : arr) {
-            if ((j & rightOne) == 0) {
-                num1 ^= j;
+        int rightOneBit = (~res + 1) & res;
+        int oneNum = 0;
+        for (int num : arr) {
+            if ((num & rightOneBit) != 0) {
+                oneNum ^= num;
             }
         }
-        System.out.println(num1 + "======" + (num1 ^ xorResult));
+
+        System.out.println(oneNum + "=========" + (oneNum ^ res));
+
     }
 }

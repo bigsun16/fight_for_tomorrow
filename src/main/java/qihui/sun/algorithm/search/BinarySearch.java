@@ -20,14 +20,11 @@ public class BinarySearch {
         boolean result = true;
         for (int i = 0; i < 100000; i++) {
             int[] arr = CheckSortIsOk.generatorRandomArr(100, 100);
-            if (arr.length == 0) {
-                continue;
-            }
             int num = arr[arr.length - 1];
             Arrays.sort(arr);
             int[] array = Arrays.stream(arr).distinct().toArray();
             int i1 = Arrays.binarySearch(array, num);
-            int index = findIndex2(array, num);
+            int index = findIndex(array, num);
             if (i1 != index) {
                 result = false;
                 break;
@@ -36,64 +33,23 @@ public class BinarySearch {
         System.out.println(result);
     }
 
-    private static int findIndex2(int[] array, int num) {
-        if (array == null || array.length == 0) {
-            return -1;
-        }
-        int left = 0;
-        int right = array.length - 1;
-        if (num > array[right] || num < array[left]) {
-            return -1;
-        }
-        if (num == array[right]) {
-            return right;
-        }
-        if (num == array[left]) {
-            return left;
-        }
-        while (left <= right) {
-            int midIndex = left + ((right - left) >> 1);
-            int midNum = array[midIndex];
-            if (num > midNum) {
-                left = midIndex + 1;
-            } else if (num < midNum) {
-                right = midIndex - 1;
-            } else {
-                return midIndex;
-            }
-        }
-        return -1;
-    }
-
     public static int findIndex(int[] arr, int num) {
         if (arr == null || arr.length == 0) {
             return -1;
         }
         int left = 0;
         int right = arr.length - 1;
-        if (num > arr[right] || num < arr[left]) {
-            return -1;
-        }
-        if (num == arr[right]) {
-            return right;
-        }
-        if (num == arr[left]) {
-            return left;
-        }
-        int resultIndex = -1;
         while (left <= right) {
-            int midIndex = left + (right - left) / 2;
-            int midNum = arr[midIndex];
-            if (num > midNum) {
+            int midIndex = left + ((right - left) >> 1);
+            if (num > arr[midIndex]) {
                 left = midIndex + 1;
-            } else if (num < midNum) {
+            } else if (num < arr[midIndex]) {
                 right = midIndex - 1;
             } else {
-                resultIndex = midIndex;
-                break;
+                return midIndex;
             }
         }
-        return resultIndex;
+        return -1;
     }
 
 }

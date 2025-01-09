@@ -12,29 +12,30 @@ public class MergeSort {
     }
 
     private static void sort(int[] arr, int left, int right) {
-        if (left == right) {
+        if (left >= right) {
             return;
         }
-        int minIndex = left + ((right - left) >> 1);
-        sort(arr, left, minIndex);
-        sort(arr, minIndex + 1, right);
-        merge(arr, left, minIndex, right);
+        int midIndex = left + ((right - left) >> 1);
+        sort(arr, left, midIndex);
+        sort(arr, midIndex + 1, right);
+        mergeSort(arr, left, midIndex, right);
     }
 
-    private static void merge(int[] arr, int left, int midIndex, int right) {
-        int[] newArr = new int[right - left + 1];
-        int lStartIndex = left;
-        int rStartIndex = midIndex + 1;
-        int newIndex = 0;
-        while (lStartIndex <= midIndex && rStartIndex <= right) {
-            newArr[newIndex++] = arr[lStartIndex] < arr[rStartIndex] ? arr[lStartIndex++] : arr[rStartIndex++];
+    private static void mergeSort(int[] arr, int left, int midIndex, int right) {
+        int[] newArray = new int[right - left + 1];
+        int lStart = left;
+        int rStart = midIndex + 1;
+        int index = 0;
+        while (lStart <= midIndex && rStart <= right) {
+            newArray[index++] = arr[lStart] > arr[rStart] ? arr[rStart++] : arr[lStart++];
         }
-        if (lStartIndex <= midIndex) {
-            System.arraycopy(arr, lStartIndex, newArr, newIndex, midIndex - lStartIndex + 1);
+        if (lStart > midIndex) {
+            System.arraycopy(arr, rStart, newArray, index, right - rStart + 1);
         } else {
-            System.arraycopy(arr, rStartIndex, newArr, newIndex, right - rStartIndex + 1);
+            System.arraycopy(arr, lStart, newArray, index, midIndex - lStart + 1);
         }
-
-        System.arraycopy(newArr, 0, arr, left, newArr.length);
+        System.arraycopy(newArray, 0, arr, left, newArray.length);
     }
+
+
 }
