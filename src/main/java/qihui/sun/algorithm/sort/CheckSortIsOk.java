@@ -19,7 +19,8 @@ public class CheckSortIsOk {
 //            BubbleSort.sort(arr);//29463  23580
 //            InsertionSort.sort(arr);//7750
 //            MergeSort.sort(arr);//7251
-            QuickSort.sort(arr);//6461
+//            QuickSort.sort(arr);//6356
+            HeapSort.sort(arr);//5502
             Arrays.sort(arr2);
             result = Arrays.equals(arr, arr2);
             if (!result) {
@@ -38,12 +39,10 @@ public class CheckSortIsOk {
 
     public static int[] generatorRandomArr(int maxSize, int maxNum) {
         int count = (int) (Math.random() * (maxSize + 1));
-        if (count == 0) {
-            return generatorRandomArr(maxSize, maxNum);
-        }
         int[] arr = new int[count];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * (maxNum + 1)) - (int) (Math.random() * (maxNum + 1));
+//            arr[i] = (int) (Math.random() * (maxNum + 1));
         }
         return arr;
     }

@@ -29,7 +29,6 @@ public class QuickSort {
         }
         int randomIndex = (int) (Math.random() * (right - left + 1)) + left;
         int randomNum = arr[randomIndex];
-        int[] newArr = new int[right - left + 1];
         int index = left;
         int lIndex = left;
         int rIndex = right;
