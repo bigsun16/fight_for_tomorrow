@@ -5,6 +5,14 @@ import qihui.sun.algorithm.sort.quick.QuickSort;
 
 import java.util.Arrays;
 
+/**
+ * 选择排序：时间：O(N^2)   空间：O(1)    稳定：否
+ * 冒泡排序：时间：O(N^2)   空间：O(1)    稳定：是
+ * 插入排序：时间：O(N^2)   空间：O(1)    稳定：是
+ * 归并排序：时间：O(NlogN) 空间：O(N)    稳定：是
+ * 快读排序：时间：O(NlogN) 空间：O(logN) 稳定：否
+ * 大堆排序：时间：O(NlogN) 空间：O(1)    稳定：否
+ */
 public class CheckSortIsOk {
     public static void main(String[] args) {
         int times = 100000;
