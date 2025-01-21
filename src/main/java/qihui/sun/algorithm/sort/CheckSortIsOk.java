@@ -1,8 +1,5 @@
 package qihui.sun.algorithm.sort;
 
-import qihui.sun.algorithm.sort.merge.MergeSort;
-import qihui.sun.algorithm.sort.quick.QuickSort;
-
 import java.util.Arrays;
 
 /**
@@ -14,10 +11,10 @@ import java.util.Arrays;
  * 大堆排序：时间：O(NlogN) 空间：O(1)    稳定：否
  */
 public class CheckSortIsOk {
-    public static void main(String[] args) {
-        int times = 100000;
-        int maxNum = 1000;
-        int maxSize = 1000;
+    public static void main(String[] args) throws InterruptedException {
+        final int times = 100000;
+        final int maxNum = 1000;
+        final int maxSize = 1000;
         boolean result = false;
         long l = System.currentTimeMillis();
         for (int i = 0; i < times; i++) {
